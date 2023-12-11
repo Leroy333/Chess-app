@@ -26,6 +26,22 @@ export class Board{
         return this.cells[y][x];
     }
 
+    public getCopyBoard(): Board{
+        const newBoard = new Board();
+        newBoard.cells =this.cells;
+        return newBoard;
+    }
+
+    public highlightCells(selectedCell: Cell | null){
+        for(let i = 0; i < this.cells.length; i++){
+            const row = this.cells[i];
+            for(let j = 0; j < row.length; j++){
+                const target = row[j];
+                target.available = !!selectedCell?.figure?.canMove(target)
+            }
+        }
+    }
+
     private addKings(){
         new King(Colors.BLACK, this.getCell(4, 0))
         new King(Colors.WHITE, this.getCell(4, 7))
