@@ -25,6 +25,7 @@ const BoardComponent:FC<BoardProps> = ({board, setBoard}) => {
 
     useEffect(()=>{
         highlightCells()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedCell])
 
     const highlightCells = () => {
